@@ -134,6 +134,11 @@ def home():
     return {"message": "ScriptFlow API is running", "version": "2.0.0"}
 
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 @app.post("/scan")
 @limiter.limit("10/minute")
 async def scan_document(
